@@ -24,4 +24,4 @@ Agree to the terms.
 On the next page,click the "Keys and Access Tokens" tab.  
 Scroll down to "Token Actions" and click "Create My  Access Token"  
 Copy your "Consumer Key (API Key)",  your "Consumer secret (API secret)", your "Access Token" and your "Access Token Secret" to use in your  sentiment.py application.  
-You can Read more about Oauth authorization at https://dev.twitter.com/docs/auth
+You can read more about Oauth authorization at https://dev.twitter.com/docs/auth
