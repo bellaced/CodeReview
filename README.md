@@ -19,6 +19,7 @@ Click "create an application".
 -  For the "Description" put anything you want.
 -  For the "Website" put  put "https://www1.chapman.edu/~username/twitter/index.html" where "username" is replaced with your actual Chapman username
 -  For the "Callback URL" put "https://www1.chapman.edu/~username/twitter/callback.html" where "username" is replaced with your actual Chapman username
+
 Agree to the terms.   
 On the next page,click the "Keys and Access Tokens" tab.  
 Scroll down to "Token Actions" and click "Create My  Access Token"  
