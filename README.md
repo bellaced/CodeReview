@@ -17,7 +17,7 @@ Go to https://dev.twitter.com/apps and log in with your twitter credentials.
 Click "create an application".    
 - For the "Name" put  "Sentiment username"  where "username" is replaced with your actual Chapman username (this will make sure that all the names are distinct)
 -  For the "Description" put anything you want.
--  For the "Website" put  put "https://www1.chapman.edu/~username/twitter/index.html" where "username" is replaced with your actual Chapman username
+-  For the "Website" put "https://www1.chapman.edu/~username/twitter/index.html" where "username" is replaced with your actual Chapman username
 -  For the "Callback URL" put "https://www1.chapman.edu/~username/twitter/callback.html" where "username" is replaced with your actual Chapman username
 
 Agree to the terms.   
