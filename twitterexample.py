@@ -1,8 +1,15 @@
 # twitterexaqmple.py
 # Demonstrates connecting to the twitter API and accessing the twitter stream
 # Author: Michael Fahy
+# ID: 14508
+# Email: fahy@chapman.edu
+# Course: CPSC 353-01
+# Assignment: PA01 Sentiment Analysis
 # Version 1.1
 # Date: February 15, 2016
+
+# Demonstrates connecting to the twitter API and accessing the twitter stream
+
 
 import twitter
 
