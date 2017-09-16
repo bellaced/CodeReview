@@ -101,15 +101,22 @@ while counter !=2:
         score = score + scores[word]
   search_scores.append(score)
 
-          
+print ('Search Score of first term')          
 print float(search_scores[0])
+
+print ('\n---------------------')
+
+print('Search Score of second term')
 print float(search_scores[1])
 
-print '--------------------------------'
-print 'Comparison'
+print '\n--------------------------------'
+print 'Comparison\n'
 
 if search_scores[0] > search_scores[-1]:
-  print('First Search was more positive')
+  print float(search_scores[0])
+  print('First Search term was more positive')
+  
 else:
-  print('Second Search was more positive')
+  print('Second Search term  was more positive')
+  print(search_scores[1])
 
