@@ -189,6 +189,8 @@ print '---------------------------------------------'
 
 print 'Comparison on Search Terms'
 
-print float (score)
-print float(score2)
+if score > score2:
+  print('Score 1 was more positive')
+else:
+  print('Score 2 was more positive')
 
