@@ -104,7 +104,7 @@ if search_scores[0] > search_scores[-1]:
   print('First Search term was more positive')
   
 else:
-  print('Second Search term  was more positive')
-  print(search_scores[1])
+  print('Second Search term was more positive')
+  print float(search_scores[1])
 
 
