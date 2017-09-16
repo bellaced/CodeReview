@@ -5,14 +5,10 @@
 import json
 import twitter
 
-# XXX:
-
-
 CONSUMER_KEY = 'eeRdgUPe87uZVylgcqytGp94L'
 CONSUMER_SECRET = 'NZHzdWm2yfT2pzKjCs5OBg6tslrN3Icdxh8PPDnfeYxuE5zhqN'
 OAUTH_TOKEN = '2525992574-YWvwO8S0AIu4Vhtm9SfdLbhxgVM3CO2Mq2HHFxf'
 OAUTH_TOKEN_SECRET = 'xOdjnSJG0idMPbkFQAPkpDFlpEZ1OFxXcvAmXWbxUX3ZP'
-
 
 auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
                            CONSUMER_KEY, CONSUMER_SECRET)
@@ -21,12 +17,6 @@ twitter_api = twitter.Twitter(auth=auth)
 
 # Import unquote to prevent url encoding errors in next_results
 from urllib import unquote
-
-# XXX: Set this variable to a trending topic,
-# or anything else for that matter. The example query below
-# was a trending topic when this content was being developed
-# and is used throughout the remainder of this chapter.
-
 
 counter = 0
 search_scores = []
@@ -41,14 +31,12 @@ while counter !=2:
   statuses = search_results['statuses']
 
   for _ in range(5):
-     print "Length of statuses", len(statuses)
+     print "Getting search terms...Length of statuses", len(statuses)
      try:
         next_results = search_results['search_metadata']['next_results']
      except KeyError, e: # No more results when next_results doesn't exist
         break
 
-    # Create a dictionary from next_results, which has the following form:
-    # ?max_id=313519052523986943&q=NCAA&include_entities=1
      kwargs = dict([ kv.split('=') for kv in next_results[1:].split("&") ])
 
      search_results = twitter_api.search.tweets(**kwargs)
@@ -76,7 +64,6 @@ while counter !=2:
           for t in status_texts
               for w in t.split() ]
 
-# Explore the first 5 items for each...
 
   print json.dumps(status_texts[0:5], indent=1)
   print json.dumps(screen_names[0:5], indent=1)
@@ -91,7 +78,7 @@ while counter !=2:
 
   scores = {} # initialize an empty dictionary
   for line in sent_file:
-    term, score  = line.split("\t")  # The file is tab-delimited. "\t" means "tab character"
+    term, score  = line.split("\t") 
     scores[term] = int(score)  # Convert the score to an integer.
 
   score = 0
@@ -119,4 +106,5 @@ if search_scores[0] > search_scores[-1]:
 else:
   print('Second Search term  was more positive')
   print(search_scores[1])
+
 
