@@ -10,7 +10,7 @@
 
 # Demonstrates connecting to the twitter API and accessing the twitter stream
 
-
+import json
 import twitter
 
 # XXX: Go to http://dev.twitter.com/apps/new to create an app and get values
@@ -19,8 +19,6 @@ import twitter
 # See https://dev.twitter.com/docs/auth/oauth for more information
 # on Twitter's OAuth implementation.
 
-print 'Example 1'
-print 'Establish Authentication Credentials'
 CONSUMER_KEY = 'eeRdgUPe87uZVylgcqytGp94L'
 CONSUMER_SECRET = 'NZHzdWm2yfT2pzKjCs5OBg6tslrN3Icdxh8PPDnfeYxuE5zhqN'
 OAUTH_TOKEN = '2525992574-YWvwO8S0AIu4Vhtm9SfdLbhxgVM3CO2Mq2HHFxf'
@@ -31,74 +29,6 @@ auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
 
 twitter_api = twitter.Twitter(auth=auth)
 
-print "Nothing to see by displaying twitter_api except that it's now a defined variable"
-print
-print twitter_api
-print
-raw_input('Press Enter to see Example 2')
-print
-
-print "---------------------------------------------------------------------"
-print 'Example 2 - Display world and US trends'
-# The Yahoo! Where On Earth ID for the entire world is 1.
-# See https://dev.twitter.com/docs/api/1.1/get/trends/place and
-# http://developer.yahoo.com/geo/geoplanet/
-
-WORLD_WOE_ID = 1
-US_WOE_ID = 23424977
-
-# Prefix ID with the underscore for query string parameterization.
-# Without the underscore, the twitter package appends the ID value
-# to the URL itself as a special case keyword argument.
-
-world_trends = twitter_api.trends.place(_id=WORLD_WOE_ID)
-us_trends = twitter_api.trends.place(_id=US_WOE_ID)
-print 'Display World Trends'
-print
-print world_trends
-print
-print 'Display US trends'
-print
-print us_trends
-print
-raw_input("Press Enter to see Example 3 ")
-print
-print "---------------------------------------------------------------------"
-print 'Example 3. Displaying API responses as pretty-printed JSON '
-print
-raw_input("Press Enter to see Example 3 ")
-print
-import json
-print
-print 'World trends with json.dumps'
-print json.dumps(world_trends, indent=1)
-print
-print
-raw_input("Press Enter to see US trends ")
-print
-print 'US trends with json.dumps'
-print json.dumps(us_trends, indent=1)
-print
-raw_input("Press Enter to see Example 4 ")
-print
-print "---------------------------------------------------------------------"
-print 'Example 4. Computing the intersection of two sets of trends'
-world_trends_set = set([trend['name']
-                        for trend in world_trends[0]['trends']])
-
-us_trends_set = set([trend['name']
-                     for trend in us_trends[0]['trends']])
-
-common_trends = world_trends_set.intersection(us_trends_set)
-
-print common_trends
-print
-print
-print "---------------------------------------------------------------------"
-print 'Example 5. Collecting search results'
-print
-raw_input("Press Enter to see Example 5 ")
-print
 # Import unquote to prevent url encoding errors in next_results
 from urllib import unquote
 
@@ -107,7 +37,7 @@ from urllib import unquote
 # was a trending topic when this content was being developed
 # and is used throughout the remainder of this chapter.
 
-#q = '#MentionSomeoneImportantForYou'
+
 q = raw_input('Enter a search term: ')
 
 #print q
@@ -141,14 +71,8 @@ for _ in range(5):
 # Show one sample search result by slicing the list...
 print json.dumps(statuses[0], indent=1)
 
-print
-raw_input("Press Enter to see Example 6 ")
-print
 print "---------------------------------------------------------------------"
-print 'Example 6. Extracting text, screen names, and hashtags from tweets'
-print
-raw_input("Press Enter to see Example 6 ")
-print
+print ' Extracting text, screen names, and hashtags from tweets'
 status_texts = [ status['text']
                  for status in statuses ]
 
@@ -174,47 +98,6 @@ print json.dumps(words[0:5], indent=1)
 
 
 
-print
-raw_input("Press Enter to see Example 7 ")
-print
-print "---------------------------------------------------------------------"
-print 'Example 7. Calculating lexical diversity for tweets'
-
-# A function for computing lexical diversity
-def lexical_diversity(tokens):
-    return 1.0*len(set(tokens))/len(tokens)
-
-# A function for computing the average number of words per tweet
-def average_words(statuses):
-    total_words = sum([ len(s.split()) for s in statuses ])
-    return 1.0*total_words/len(statuses)
-print 'Lexical diversity of words: '
-print lexical_diversity(words)
-print 'Lexical diversity of screen names: '
-print lexical_diversity(screen_names)
-print 'Lexical diversity of hashtags: '
-print lexical_diversity(hashtags)
-print 'Average number of words per tweet: '
-print average_words(status_texts)
-
-print
-raw_input("Press Enter to see Example 8 ")
-print
-print "---------------------------------------------------------------------"
-print 'Example 8. Looking up users who have retweeted a status'
-
-
-# Get the original tweet id for a tweet from its retweeted_status node
-# and insert it here in place of the sample value that is provided
-# from the text of the book
-
-_retweets = twitter_api.statuses.retweets(id=317127304981667841)
-print [r['user']['screen_name'] for r in _retweets]
-
-
-print
-raw_input("Press Enter to see Example 9 ")
-print
 
 print "---------------------------------------------------------------------"
 print 'Example 9. Sentiment Analysis on the search term from Example 5'
@@ -231,3 +114,7 @@ for word in words:
     if uword in scores.keys():
         score = score + scores[word]
 print float(score)
+
+
+
+
