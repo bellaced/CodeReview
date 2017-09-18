@@ -26,7 +26,7 @@ while counter !=2:
   q = raw_input('Enter Search Term: ')
   count = 1000
   
-  search_results = twitter_api.search.tweets(q=q, count=count)
+  search_results = twitter_api.search.tweets(q=q, count=1000)
 
   statuses = search_results['statuses']
 
@@ -102,7 +102,8 @@ print 'Comparison\n'
 if search_scores[0] > search_scores[-1]:
   print float(search_scores[0])
   print('First Search term was more positive')
-  
+elif search_scores[0] == search_scores[1]:
+  print('Scores are the exact same')  
 else:
   print('Second Search term was more positive')
   print float(search_scores[1])
