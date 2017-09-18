@@ -30,7 +30,8 @@ while counter !=2:
 
   statuses = search_results['statuses']
 
-  for _ in range(5):
+  
+  for _ in range(10):
      print "Getting search terms...Length of statuses", len(statuses)
      try:
         next_results = search_results['search_metadata']['next_results']
@@ -41,7 +42,6 @@ while counter !=2:
 
      search_results = twitter_api.search.tweets(**kwargs)
      statuses += search_results['statuses']
-
 # Show one sample search result by slicing the list...
   print json.dumps(statuses[0], indent=1)
 
